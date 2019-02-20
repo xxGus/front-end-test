@@ -4,43 +4,59 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Employees</title>
+
     <script src="libs/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" rel="stylesheet">
 </head>
 <body>
-<header>
+<header class="header">
     <h1 class="title">Employees Register</h1>
 </header>
-<div class="container">
-    <form action="" class="form" id="form">
-        <h2 class="title">Create/Edit</h2>
-        <div class="fields">
-            <input class="form-control" name="name" placeholder="Name" type="text">
-            <div class="fields-group">
-                <input class="form-control" name="age" placeholder="Age" type="text">
-                <input class="form-control" name="birth-day" placeholder="Birth Day" type="text">
-                <input class="form-control" name="phone-number" placeholder="Phone Number" type="tel">
+<section class="create-edit">
+    <div class="container">
+        <form action="" class="form" id="form">
+            <h2 class="title">Create/Edit</h2>
+            <div class="fields">
+                <input class="form-control" name="name" placeholder="Name" tabindex="1" type="text" required>
+                <div class="basic-info">
+                    <div class="fields-group">
+                        <input class="form-control" name="age" placeholder="Age" tabindex="2" type="text">
+                        <input class="form-control" name="cpf" placeholder="CPF" tabindex="5" type="text" minlength="14" required>
+                    </div>
+                    <div class="fields-group">
+                        <input class="form-control" name="birth_day" placeholder="Birth Day" tabindex="3" type="text" onfocus="(this.type='date')" required>
+                        <input class="form-control" name="rg" placeholder="RG" tabindex="6" type="text" required>
+                    </div>
+                    <div class="fields-group">
+                        <input class="form-control" name="phone_number" placeholder="Phone Number" tabindex="4"
+                               type="tel" required>
+                    </div>
+                </div>
+                <div class="address">
+                    <div class="fields-group">
+                        <input class="form-control" name="address" placeholder="Address" tabindex="7" type="text" required>
+
+                        <div class="fields-group">
+                            <input class="form-control" name="city" placeholder="City" tabindex="9" type="text" required>
+                            <input class="form-control" name="state" placeholder="State" tabindex="10" type="text" required>
+                        </div>
+                    </div>
+                    <input class="form-control" name="number" placeholder="Number" tabindex="8" type="text" required>
+                </div>
+                <textarea class="form-control" name="notes" placeholder="Notes"></textarea>
             </div>
-            <div class="fields-group">
-                <input class="form-control" name="rg" placeholder="RG" type="text">
-                <input class="form-control" name="cpf" placeholder="CPF" type="text">
+            <div class="group-buttons">
+                <button class="btn-save" id="save" type="submit">Save</button>
+                <a href="index.html" class="btn-cancel" id="cancel">Cancel</a>
             </div>
-            <div class="fields-group">
-                <input class="form-control" name="address" placeholder="Address" type="text">
-                <input class="form-control" name="number" placeholder="Number" type="text">
-            </div>
-            <div class="fields-group">
-                <input class="form-control" name="city" placeholder="city" type="text">
-                <input class="form-control" name="state" placeholder="State" type="text">
-            </div>
-            <textarea class="form-control" name="notes" placeholder="Notes"></textarea>
-        </div>
-        <div class="group-buttons">
-            <button class="btn btn-save">Save</button>
-            <button class="btn btn-cancel">Cancel</button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</section>
+<footer class="footer">
+</footer>
+<script src="assets/js/Employe.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="libs/jquery.mask.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
-$title-color: #001954;
-$btn-color: #7e9c3d;
+$primary-color: rgba(0, 81, 255, 0.47);
+$secundary-color: #7e9c3d;
 $white: #fff;
+$gray: #c9c9c9;
+$red: #ff4150;
 
 $screen-md-max: 1199px;
 $screen-sm-max: 991px;
@@ -8,16 +10,283 @@ $screen-xs-max: 767px;
 
 * {
     box-sizing: border-box;
-}
-
-body {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    list-style: none;
+    border: 0;
     font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2, h3, h4, h5 {
-    color: $title-color;
+body{
+    position: relative;
+    height: auto;
 }
 
-.form-control{
+div {
+    font-size: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    color: $primary-color;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+a {
+    font-size: 13px;
+    text-decoration: none;
+}
+
+@mixin btn-prop($bg-color, $color) {
+    padding: 5px 15px;
+    background-color: $bg-color;
+    color: $color;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($bg-color, 8);
+    }
+}
+
+.btn {
+    @include btn-prop($gray, $white);
+}
+
+.form-control {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid $gray;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+
+    &:focus {
+        outline: none;
+        border-color: $secundary-color;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.alert {
+    border-color: $red !important;
+}
+
+.disabled {
+    &:hover {
+        cursor: not-allowed !important;
+    }
+}
+
+.container {
+    width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+
+    @media screen and (max-width: $screen-md-max) {
+        width: 970px;
+    }
+
+    @media screen and (max-width: $screen-sm-max) {
+        width: 750px;
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+        width: 100%;
+    }
+}
+
+.header {
+    text-align: center;
+    border-bottom: 3px solid $primary-color;
+    padding: 20px 15px 10px;
+}
+
+.create-edit {
+    padding: 30px 0;
+    height: 100vh;
     
+    @media screen and (max-width: $screen-xs-max) {
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .container {
+
+        .form {
+            border: 2px solid $primary-color;
+            border-radius: 5px;
+            padding: 20px;
+
+            .title {
+                margin-bottom: 10px;
+            }
+
+            .fields {
+
+                .basic-info, .address {
+                    display: flex;
+                    
+                    @media screen and (max-width: $screen-xs-max) {
+                        flex-direction: column;
+                    }
+
+                    .fields-group {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        padding-right: 10px;
+
+                        &:last-child {
+                            padding-right: 0;
+                        }
+
+                        @media screen and (max-width: $screen-xs-max) {
+                            padding-right: 0;
+                        }
+                    }
+                }
+
+                .address {
+                    .fields-group {
+                        .fields-group {
+                            flex-direction: row;
+                        }
+                    }
+
+                    .form-control[name="number"] {
+                        width: 10%;
+                        
+                        @media screen and (max-width: $screen-sm-max){
+                            width: 15%;
+                        }
+
+                        @media screen and (max-width: $screen-xs-max){
+                            width: 100%;
+                        }
+                    }
+                }
+
+                textarea.form-control {
+                    resize: none;
+                    width: 100%;
+                    height: 100px;
+                }
+            }
+
+            .group-buttons {
+                display: flex;
+                justify-content: flex-end;
+
+                .btn-save {
+                    @include btn-prop($secundary-color, $white);
+                    padding: 5px 65px;
+                    margin-right: 10px;
+                }
+
+                .btn-cancel {
+                    @include btn-prop($red, $white);
+                }
+            }
+        }
+    }
+}
+
+.list {
+    height: 100vh;
+
+    .container {
+        padding-top: 65px;
+        text-align: right;
+
+        .bg-new-employe {
+            width: 15%;
+            margin: auto;
+            margin-right: 0;
+            text-align: center;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: $screen-md-max) {
+                width: 30%;
+            }
+            
+            @media screen and (max-width: $screen-xs-max) {
+                width: 100%;
+                text-align: right;
+            }
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 16px;
+
+            td, th {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            tr:hover {
+                background-color: #ddd;
+            }
+
+            th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: $secundary-color;
+                color: white;
+            }
+
+            .name {
+                width: 85%;
+                
+                @media screen and (max-width: $screen-md-max) {
+                    width: 70%;
+                }
+            }
+
+            .option {
+                text-align: center;
+
+                .btn:first-child {
+                    @include btn-prop($red, $white);
+                    margin-right: 5px;
+
+                    @media screen and (max-width: $screen-xs-max) {
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .btn {
+                    @include btn-prop($primary-color, $white);
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background-color: $gray;
 }
